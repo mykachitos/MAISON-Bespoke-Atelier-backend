@@ -31,11 +31,11 @@ python manage.py runserver
 4. После первого деплоя заполнить переменные:
    - `CORS_ALLOWED_ORIGINS=https://<frontend-domain>`
    - `CSRF_TRUSTED_ORIGINS=https://<frontend-domain>`
-5. Создать администратора:
-
-```bash
-python manage.py createsuperuser
-```
+5. Если нужен доступ в Django admin на free-плане без shell, можно временно задать:
+   - `DJANGO_SUPERUSER_USERNAME`
+   - `DJANGO_SUPERUSER_EMAIL`
+   - `DJANGO_SUPERUSER_PASSWORD`
+6. После следующего deploy backend сам создаст superuser. Затем эти переменные лучше удалить.
 
 ### Healthcheck
 
