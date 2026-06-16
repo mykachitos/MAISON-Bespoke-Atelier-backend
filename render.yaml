@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: maison-bespoke-atelier-backend
+    runtime: python
+    plan: free
+    rootDir: app
+    buildCommand: bash build.sh
+    startCommand: gunicorn app.wsgi:application --log-file -
+    healthCheckPath: /api/health/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: maison-bespoke-atelier-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+
+databases:
+  - name: maison-bespoke-atelier-db
+    plan: free
