@@ -18,7 +18,6 @@ python manage.py runserver
 В репозитории уже подготовлены:
 
 - `render.yaml` для Blueprint deploy
-- `app/build.sh` для сборки
 - production-настройки Django под Postgres и WhiteNoise
 - `app/.env.example` с нужными переменными окружения
 
